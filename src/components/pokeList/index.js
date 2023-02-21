@@ -1,32 +1,43 @@
 import React, { useState, useEffect } from 'react';
+// import styled from 'styled-components';
+import axios from 'axios';
+import { PokemonCard, PokemonList } from './pokeList.styled';
 
-export function GetPokemon() {
-    
-    // const pokeUrl = 'https://pokeapi.co/api/v2/pokemon/';
-    const [pokemon, setPokemon] = useState(null);
+
+export function ShowPokemon() {
+
+    const pokeUrl = 'https://pokeapi.co/api/v2/pokemon/';
+    const [pokemon, setPokemon] = useState([]);
 
     useEffect(() => {
-        fetch('https://pokeapi.co/api/v2/pokemon/?limit=10')
-        .then(response => response.json())
-        .then(data => setPokemon(data));
+        getPokemon()
     }, []);
 
-    
-    if(!pokemon) {
+    async function getPokemon() {
+        const pokemonList = await axios(`${pokeUrl}?limit=10`)
+        const data = pokemonList.data.results
+        setPokemon(data)
+    }
+
+    if (!pokemon) {
         return <h3>Loading...</h3>
     }
-    
-    console.log(pokemon.results[3]);
+
+    console.log(pokemon);
     return (
-        <div>
-            <h1>Pokedex</h1>
-            <ul>
-                <li>{pokemon.name}</li>
-                <li>Nome: { }</li>
-                <li>Moves</li>
-                <li>Abilities</li>
-                <li>Type</li>
-            </ul>
-        </div>
+        <>
+            <PokemonCard>
+                {
+                    pokemon.map((pokemon, index) => {
+                        return (
+                            <PokemonList key={index}>
+                                {pokemon.name}
+
+                            </PokemonList>
+                        )
+                    })
+                }
+            </PokemonCard>
+        </>
     )
 }

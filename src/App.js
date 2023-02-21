@@ -1,12 +1,13 @@
 import './App.css';
-import { GetPokemon } from './components/pokeList';
+import { ShowPokemon } from './components/pokeList';
+import { PokedexContainer, Reset } from './components/pokeList/pokeList.styled';
 
 
 function App() {
   return (
-    <div className="container">
-      <GetPokemon/>
-    </div>
+    <PokedexContainer>
+      <ShowPokemon/>
+    </PokedexContainer>
   );
 }
 
