@@ -1,27 +1,23 @@
 import React, { useState, useEffect } from 'react';
-// import styled from 'styled-components';
 import axios from 'axios';
-import { PokemonCard, PokemonList } from './pokeList.styled';
+import { PokemonCard, PokemonImages, PokemonList } from './pokeList.styled';
+import { pokeUrl } from '../services/getPokeApi';
 
 
 export function ShowPokemon() {
 
-    const pokeUrl = 'https://pokeapi.co/api/v2/pokemon/';
     const [pokemon, setPokemon] = useState([]);
 
     useEffect(() => {
-        getPokemon()
+        getPokemon();
     }, []);
 
-    async function getPokemon() {
-        const pokemonList = await axios(`${pokeUrl}?limit=10`)
-        const data = pokemonList.data.results
-        setPokemon(data)
+    function getPokemon() {
+        axios(`${pokeUrl}?limit=10`)
+        .then((response) => setPokemon(response.data.results));
     }
 
-    if (!pokemon) {
-        return <h3>Loading...</h3>
-    }
+    if(!pokemon) <h3>Loading...</h3>
 
     console.log(pokemon);
     return (
@@ -30,9 +26,9 @@ export function ShowPokemon() {
                 {
                     pokemon.map((pokemon, index) => {
                         return (
-                            <PokemonList key={index}>
+                            <PokemonList key={index}>                            
+                                <PokemonImages src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${++index}.png`}/>
                                 {pokemon.name}
-
                             </PokemonList>
                         )
                     })

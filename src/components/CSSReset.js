@@ -11,9 +11,12 @@ export const CSSReset = createGlobalStyle`
     }
 
     body {
-        height: 100vh;
         font-family: 'Rubik', sans-serif;
-        background-color: #CDE0BF;
+        background-color: #cde0bf;
+    }
+
+    body::first-letter {
+        text-transform: uppercase;
     }
 
     a {

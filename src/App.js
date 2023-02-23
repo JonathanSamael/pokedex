@@ -1,6 +1,6 @@
 import { CSSReset } from './components/CSSReset';
-import { ShowPokemon } from './components/pokeList';
-import { PokedexContainer, Reset } from './components/pokeList/pokeList.styled';
+import { ShowPokemon } from './components/pokemonList';
+import { PokedexContainer } from './components/pokemonList/pokeList.styled';
 
 
 function App() {
