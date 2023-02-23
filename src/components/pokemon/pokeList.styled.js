@@ -1,11 +1,13 @@
 import styled from "styled-components"
 
 export const PokedexContainer = styled.main`
-    /* height: 80vh; */
     margin: 50px;
     background-color: #fff;
     border-radius: 6px;
     padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 export const PokemonCard = styled.div`
@@ -17,7 +19,8 @@ export const PokemonCard = styled.div`
     gap: 20px;
     font-size: 3rem;
     
-    `
+`;
+
 export const PokemonList = styled.div`    
     padding: 15px;
     display: flex; 
@@ -33,4 +36,4 @@ export const PokemonList = styled.div`
 export const PokemonImages = styled.img`
     margin-bottom: 10px;
     width: 150px;
-`
+`;

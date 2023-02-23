@@ -15,10 +15,6 @@ export const CSSReset = createGlobalStyle`
         background-color: #cde0bf;
     }
 
-    body::first-letter {
-        text-transform: uppercase;
-    }
-
     a {
         text-decoration: none;
     }
