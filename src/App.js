@@ -1,16 +1,16 @@
-import { CSSReset } from './components/CSSReset';
-import { ShowPokemon } from './components/pokemon';
-import { PokedexContainer } from './components/pokemon/pokeList.styled';
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { PokemonPage } from "./components/pages/PokemonPage";
+import { ShowPokemon } from "./components/pokemon";
 
 function App() {
   return (
     <>
-      <CSSReset />
-      
-      <PokedexContainer>
-        <ShowPokemon />
-      </PokedexContainer>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<ShowPokemon/>}/>
+          <Route path="/pokemon/:id" element={<PokemonPage />}/>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
