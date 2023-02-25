@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { PokedexContainer, PokemonCard, PokemonImages, PokemonList } from "./pokeList.styled";
+import {
+  PokedexContainer,
+  PokemonCard,
+  PokemonImages,
+  PokemonList,
+} from "./pokeList.styled";
 import { Button } from "../button/button";
 
 export function ShowPokemon() {
@@ -25,17 +30,18 @@ export function ShowPokemon() {
     <PokedexContainer>
       <PokemonCard>
         {pokemon.map((pokemon, index) => (
-            <PokemonList key={index}>
+          <PokemonList key={index}>
+            <Link to={`/pokemon/${++index}`}>
               <PokemonImages
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${++index}.png`}
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${index}.png`}
                 alt={pokemon.name}
               />
-              <Link to={`/pokemon/${index}`}>{pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</Link>
-            </PokemonList>
-          ))}
+              {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}
+            </Link>
+          </PokemonList>
+        ))}
       </PokemonCard>
       <Button onClick={() => getPokemon()}>Load more</Button>
     </PokedexContainer>
   );
 }
-

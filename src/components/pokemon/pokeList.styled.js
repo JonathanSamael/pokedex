@@ -8,16 +8,20 @@ export const PokedexContainer = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
+  transition: all 800ms;
+  `;
 
 export const PokemonCard = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  font-size: 3rem;
+  font-size: 4.5rem;
   font-weight: 600;
-`;
+  text-align: center;
+  color: #000;
+  transition: all 800ms;
+  `;
 
 export const PokemonList = styled.div`
   padding: 15px;
@@ -29,9 +33,11 @@ export const PokemonList = styled.div`
   height: 250px;
   min-width: 200px;
   border-radius: 10px;
+  transition: all 800ms;
 `;
 
 export const PokemonImages = styled.img`
+  display: block;
   margin-bottom: 10px;
   width: 150px;
 `;
