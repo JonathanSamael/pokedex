@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { PokedexContainer } from "../pokemon/pokeList.styled";
 import { ButtonStyle } from "../button/button.styled";
 import {
   Header,
+  Container,
+  PokemonContainer,
   PokemonImage,
   PokemonInfos,
   PokemonDescription,
@@ -29,29 +30,38 @@ export const PokemonPage = () => {
     <>
       <Header>
         <Link to={`/`}>
-          <ButtonStyle style={{backgroundColor: 'rgba(0, 98, 72, 0.5)', borderColor: '#fff'}}>Back</ButtonStyle>
+          <ButtonStyle
+            style={{
+              backgroundColor: "rgba(0, 98, 72, 0.5)",
+              borderColor: "#fff",
+            }}
+          >
+            Back
+          </ButtonStyle>
         </Link>
       </Header>
-      <PokedexContainer>
-        <PokemonInfos>
-          <PokemonImage src={pokemon.sprites?.other?.home?.front_default} />
-          <PokemonDescription>
-            <PokemonName>{pokemon.name}</PokemonName>
-            <H3>Moves</H3>
-            {pokemon?.moves?.slice(0, 4).map((moves, index) => {
-              return <p key={index}>{moves.move.name}</p>;
-            })}
-            <H3>Abilities</H3>
-            {pokemon?.abilities?.slice(0, 4).map((abilities, index) => {
-              return <p key={index}>{abilities.ability.name}</p>;
-            })}
-            <H3>Type</H3>
-            {pokemon?.types?.slice(0, 4).map((types, index) => {
-              return <p key={index}>{types.type.name}</p>;
-            })}
-          </PokemonDescription>
-        </PokemonInfos>
-      </PokedexContainer>
+      <Container>
+        <PokemonContainer>
+          <PokemonInfos>
+            <PokemonImage src={pokemon.sprites?.other?.home?.front_default} />
+            <PokemonDescription>
+              <PokemonName>{pokemon.name}</PokemonName>
+              <H3>Moves</H3>
+              {pokemon?.moves?.slice(0, 4).map((moves, index) => {
+                return <p key={index}>{moves.move.name}</p>;
+              })}
+              <H3>Abilities</H3>
+              {pokemon?.abilities?.slice(0, 4).map((abilities, index) => {
+                return <p key={index}>{abilities.ability.name}</p>;
+              })}
+              <H3>Type</H3>
+              {pokemon?.types?.slice(0, 4).map((types, index) => {
+                return <p key={index}>{types.type.name}</p>;
+              })}
+            </PokemonDescription>
+          </PokemonInfos>
+        </PokemonContainer>
+      </Container>
     </>
   );
 };
