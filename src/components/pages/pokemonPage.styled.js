@@ -11,7 +11,8 @@ export const Container = styled.main`
 `;
 
 export const PokemonContainer = styled.section`
-  background-color: #fff;
+  background-color: #efefef;
+  border: 1px solid #c8c8c8;
   border-radius: 6px;
   padding: 20px;
   margin: 20px;

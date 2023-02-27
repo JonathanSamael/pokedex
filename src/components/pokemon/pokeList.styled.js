@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const PokedexContainer = styled.main`
   margin: 50px;
-  background-color: #fff;
+  background-color: #efefef;
+  border: 1px solid #c8c8c8;
   border-radius: 6px;
   padding: 15px;
   display: flex;
@@ -19,7 +20,6 @@ export const PokemonCard = styled.div`
   font-size: 4.5rem;
   font-weight: 600;
   text-align: center;
-  color: #000;
   transition: all 800ms;
   `;
 
