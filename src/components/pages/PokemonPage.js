@@ -2,8 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ButtonStyle } from "../button/button.styled";
+import { Header } from "../header/header.styled";
 import {
-  Header,
   Container,
   PokemonContainer,
   PokemonImage,
@@ -30,15 +30,9 @@ export const PokemonPage = () => {
     <>
       <Header>
         <Link to={`/`}>
-          <ButtonStyle
-            style={{
-              backgroundColor: "rgba(0, 98, 72, 0.5)",
-              borderColor: "#fff",
-            }}
-          >
-            Back
-          </ButtonStyle>
+          <ButtonStyle>Back</ButtonStyle>
         </Link>
+        <ButtonStyle>Theme</ButtonStyle>
       </Header>
       <Container>
         <PokemonContainer>

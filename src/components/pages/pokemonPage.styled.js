@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-export const Header = styled.section`
-  padding: 0 10px;
-`;
-
 export const Container = styled.main`
   display: flex;
   justify-content: center;
