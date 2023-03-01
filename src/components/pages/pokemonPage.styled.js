@@ -7,7 +7,7 @@ export const Container = styled.main`
 `;
 
 export const PokemonContainer = styled.section`
-  background-color: #efefef;
+  background-color: ${({ theme }) => theme.backgroundContainer};
   border: 1px solid #c8c8c8;
   border-radius: 6px;
   padding: 20px;
@@ -22,10 +22,13 @@ export const PokemonContainer = styled.section`
 export const PokemonInfos = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: rgba(0, 98, 72, 0.3);
-  border-radius: 10px;
-  font-size: 3rem;
   padding: 10px;
+  border-radius: 10px;
+  background-color: ${({ theme }) => theme.card};
+  border: 1px solid #c8c8c8;
+  font-size: 3rem;
+  color: ${({ theme }) => theme.color};
+  transition: all 800ms;
 
   @media (max-width: 720px) {
     flex-direction: column;
@@ -34,7 +37,6 @@ export const PokemonInfos = styled.div`
 `;
 
 export const PokemonImage = styled.img`
-  /* width: 300px; */
   width: 50%;
   margin: 15px;
 `;

@@ -9,13 +9,13 @@ import {
 } from "./pokeList.styled";
 import { HomeHeader } from "../header/header.styled";
 import { ButtonStyle } from "../button/button.styled";
-import { ThemeContext } from "../contexts/themeContext"
+import { ThemeContext, themes } from "../contexts/themeContext";
 import { ThemeToggleButton } from "../ThemeToggleButton/ToggleButton";
 
 export function ShowPokemon() {
   const [pokemon, setPokemon] = useState([]);
   const [showMore, setShowMore] = useState(10);
-  const { theme } = useContext(ThemeContext)
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     getPokemon();
@@ -33,12 +33,14 @@ export function ShowPokemon() {
   return (
     <>
       <HomeHeader theme={theme}>
-        <ThemeToggleButton>Theme</ThemeToggleButton>
+        <ThemeToggleButton theme={theme}>{`Theme ${
+          theme === themes.light ? "☀️" : "🌒"
+        }`}</ThemeToggleButton>
       </HomeHeader>
-      <PokedexContainer>
+      <PokedexContainer theme={theme}>
         <PokemonCard>
           {pokemon.map((pokemon, index) => (
-            <PokemonList key={index}>
+            <PokemonList key={index} theme={theme}>
               <Link to={`/pokemon/${++index}`}>
                 <PokemonImages
                   src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${index}.png`}
@@ -49,7 +51,7 @@ export function ShowPokemon() {
             </PokemonList>
           ))}
         </PokemonCard>
-        <ButtonStyle onClick={() => getPokemon()}>Load more</ButtonStyle>
+        <ButtonStyle theme={theme} onClick={() => getPokemon()}>Load more</ButtonStyle>
       </PokedexContainer>
     </>
   );

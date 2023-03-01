@@ -3,14 +3,9 @@
   padding: 0;
   box-sizing: border-box;
   font-size: 62.5%;
+  font-family: 'Rubik', sans-serif;
 }
 
 body {
-  font-family: 'Rubik', sans-serif;
   background-color: #cde0bf;
-}
-
-a {
-  text-decoration: none;
-  color: #101010;
 }

@@ -9,8 +9,10 @@ export const ThemeToggleButton = (props) => {
     <ButtonStyle
       theme={theme}
       onClick={() =>
-        setTheme(theme === themes.light ? themes.dark : themes.light)
+        setTheme(theme === themes.dark ? themes.light : themes.dark)
       }
-    >{props.children}</ButtonStyle>
+    >
+      {props.children}
+    </ButtonStyle>
   );
 };
