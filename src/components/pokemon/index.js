@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import {
@@ -9,10 +9,13 @@ import {
 } from "./pokeList.styled";
 import { HomeHeader } from "../header/header.styled";
 import { ButtonStyle } from "../button/button.styled";
+import { ThemeContext } from "../contexts/themeContext"
+import { ThemeToggleButton } from "../ThemeToggleButton/ToggleButton";
 
 export function ShowPokemon() {
   const [pokemon, setPokemon] = useState([]);
   const [showMore, setShowMore] = useState(10);
+  const { theme } = useContext(ThemeContext)
 
   useEffect(() => {
     getPokemon();
@@ -29,8 +32,8 @@ export function ShowPokemon() {
 
   return (
     <>
-      <HomeHeader>
-        <ButtonStyle>Theme</ButtonStyle>
+      <HomeHeader theme={theme}>
+        <ThemeToggleButton>Theme</ThemeToggleButton>
       </HomeHeader>
       <PokedexContainer>
         <PokemonCard>

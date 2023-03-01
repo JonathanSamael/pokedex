@@ -20,7 +20,6 @@ export const PokemonPage = () => {
   useEffect(() => {
     async function getPokemon() {
       const response = await axios(`https://pokeapi.co/api/v2/pokemon/${id}`);
-      console.log(response.data);
       setPokemon(response.data);
     }
     getPokemon();
