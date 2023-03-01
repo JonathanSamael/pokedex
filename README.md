@@ -1,7 +1,23 @@
-# Getting Started with Create React App
+# Pokedex React
+A final React project create from DevQuest course.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Built with
 
-In the project directory, you can run:
+- React;
+- Styled-componentes;
+- React-routes;
+- Context API;
 
-### `npm start`
+## Screenshots
+
+Desktop:
+
+![LightMode](src/designs/desktop-lightmode.png)
+
+![DarkMode](src/designs/desktop-darkmode.png)
+
+Mobile:
+
+![LightMode - Mobile](src/designs/mobile-lightmode.png)
+
+![DarkMode - Mobile](src/designs/mobile-darkmode.png)
