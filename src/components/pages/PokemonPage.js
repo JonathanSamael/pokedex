@@ -2,7 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ButtonStyle } from "../button/button.styled";
-import { ThemeContext } from "../contexts/themeContext";
+import { ThemeContext, themes } from "../contexts/themeContext";
 import { Header } from "../header/header.styled";
 import { ThemeToggleButton } from "../ThemeToggleButton/ToggleButton";
 import {
@@ -34,7 +34,9 @@ export const PokemonPage = () => {
         <Link to={`/`}>
           <ButtonStyle theme={theme}>Back</ButtonStyle>
         </Link>
-        <ThemeToggleButton>Theme</ThemeToggleButton>
+        <ThemeToggleButton>{`Theme ${
+          theme === themes.light ? "☀️" : "🌒"
+        }`}</ThemeToggleButton>
       </Header>
       <Container>
         <PokemonContainer theme={theme}>
