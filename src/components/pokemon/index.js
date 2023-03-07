@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+// import { getPokemon } from "../../services";
 import {
   PokedexContainer,
   PokemonCard,
@@ -9,13 +9,20 @@ import {
 } from "./pokeList.styled";
 import { HomeHeader } from "../header/header.styled";
 import { ButtonStyle } from "../button/button.styled";
-import { ThemeContext, themes } from "../contexts/themeContext";
+import { ThemeContext, themes } from "../../contexts/themeContext";
 import { ThemeToggleButton } from "../ThemeToggleButton/ToggleButton";
+import axios from "axios";
 
 export function ShowPokemon() {
+  const pageInitialLimit = 10;
+
   const [pokemon, setPokemon] = useState([]);
   const [showMore, setShowMore] = useState(10);
   const { theme } = useContext(ThemeContext);
+
+  const addPokemon = () => {
+    setShowMore(showMore + pageInitialLimit)
+  }
 
   useEffect(() => {
     getPokemon();
@@ -26,8 +33,9 @@ export function ShowPokemon() {
       `https://pokeapi.co/api/v2/pokemon/?limit=${showMore}`
     );
     const data = response.data.results;
+    console.log(response);
     setPokemon(data);
-    setShowMore(showMore + 10);
+    addPokemon()
   }
 
   return (
@@ -51,7 +59,9 @@ export function ShowPokemon() {
             </PokemonList>
           ))}
         </PokemonCard>
-        <ButtonStyle theme={theme} onClick={() => getPokemon()}>Load more</ButtonStyle>
+        <ButtonStyle theme={theme} onClick={() => getPokemon()}>
+          Load more
+        </ButtonStyle>
       </PokedexContainer>
     </>
   );

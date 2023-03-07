@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ButtonStyle } from "../button/button.styled";
+import { ButtonStyle } from "../components/button/button.styled";
 import { ThemeContext, themes } from "../contexts/themeContext";
-import { Header } from "../header/header.styled";
-import { ThemeToggleButton } from "../ThemeToggleButton/ToggleButton";
+import { Header } from "../components/header/header.styled";
+import { ThemeToggleButton } from "../components/ThemeToggleButton/ToggleButton";
 import {
   Container,
   PokemonContainer,
