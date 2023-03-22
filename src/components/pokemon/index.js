@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
-// import { getPokemon } from "../../services";
+import { getPokemon } from "../../services";
 import {
   PokedexContainer,
   PokemonCard,
@@ -17,29 +16,26 @@ import { PokemonContext } from "../../contexts/pokemonContext";
 export function ShowPokemon() {
   const pageInitialLimit = 10;
 
-  const [showMore, setShowMore] = useState(10);
+  const [paginationOffset, setPaginationOffset] = useState(10);
   const { pokemon, setPokemon } = useContext(PokemonContext);
+  // const [ pokemon, setPokemon ] = useState([]);
   const { theme } = useContext(ThemeContext);
 
   const pocketMons = Array.from(pokemon);
 
   const addPokemon = () => {
-    setShowMore(showMore + pageInitialLimit);
+    setPaginationOffset(paginationOffset + pageInitialLimit);
   };
-
-  useEffect(() => {
-    getPokemon();
-  }, []);
-
-  async function getPokemon() {
-    const response = await axios(
-      `https://pokeapi.co/api/v2/pokemon/?limit=${showMore}`
-    );
-    const data = response.data.results;
-    console.log(response);
-    setPokemon(data);
+  
+  const fetchData = async () => {
+    const data = await getPokemon(paginationOffset);
+    setPokemon(data)
     addPokemon();
-  }
+  };
+  
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -62,7 +58,7 @@ export function ShowPokemon() {
             </PokemonList>
           ))}
         </PokemonCard>
-        <ButtonStyle theme={theme} onClick={() => getPokemon()}>
+        <ButtonStyle theme={theme} onClick={() => fetchData()}>
           Load more
         </ButtonStyle>
       </PokedexContainer>

@@ -1,10 +1,9 @@
 import axios from "axios";
 
-export async function getPokemon(setPokemon) {
+export async function getPokemon(paginationOffset) {
     const response = await axios(
-      `https://pokeapi.co/api/v2/pokemon/?limit=10&offset=0`
+      `https://pokeapi.co/api/v2/pokemon/?limit=${paginationOffset}&offset=0`
     );
-    const data = response.data.results;
-    setPokemon(data)
+      return response.data.results
 }
 
