@@ -1,8 +1,9 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ButtonStyle } from "../components/button/button.styled";
 import { ThemeContext, themes } from "../contexts/themeContext";
+import { PokemonContext } from "../contexts/pokemonContext";
 import { Header } from "../components/header/header.styled";
 import { ThemeToggleButton } from "../components/ThemeToggleButton/ToggleButton";
 import {
@@ -16,7 +17,7 @@ import {
 } from "./pokemonPage.styled";
 
 export const PokemonPage = () => {
-  const [pokemon, setPokemon] = useState([]);
+  const { pokemon, setPokemon } = useContext(PokemonContext);
   const { theme } = useContext(ThemeContext);
   let { id } = useParams();
 

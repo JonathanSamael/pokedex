@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { PokemonProvider } from "./contexts/pokemonContext";
 import { ThemeContext, ThemeProvider } from "./contexts/themeContext";
 import { AppRoutes } from "./routes";
 
@@ -7,7 +8,9 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <AppRoutes />
+      <PokemonProvider>
+        <AppRoutes />
+      </PokemonProvider>
     </ThemeProvider>
   );
 }
