@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
-import { getPokemon } from "../../services";
+// import { getPokemon } from "../../services";
 import {
   PokedexContainer,
   PokemonCard,
@@ -11,7 +12,6 @@ import { HomeHeader } from "../header/header.styled";
 import { ButtonStyle } from "../button/button.styled";
 import { ThemeContext, themes } from "../../contexts/themeContext";
 import { ThemeToggleButton } from "../ThemeToggleButton/ToggleButton";
-// import axios from "axios";
 import { PokemonContext } from "../../contexts/pokemonContext";
 
 export function ShowPokemon() {
@@ -21,7 +21,6 @@ export function ShowPokemon() {
   const { pokemon, setPokemon } = useContext(PokemonContext);
   const { theme } = useContext(ThemeContext);
 
-
   const pocketMons = Array.from(pokemon);
 
   const addPokemon = () => {
@@ -29,19 +28,18 @@ export function ShowPokemon() {
   };
 
   useEffect(() => {
-    addPokemon();
-    getPokemon(setPokemon);
+    getPokemon();
   }, []);
 
-  // async function getPokemon() {
-  //   const response = await axios(
-  //     `https://pokeapi.co/api/v2/pokemon/?limit=${showMore}`
-  //   );
-  //   const data = response.data.results;
-  //   console.log(response);
-  //   setPokemon(data);
-  //   addPokemon();
-  // }
+  async function getPokemon() {
+    const response = await axios(
+      `https://pokeapi.co/api/v2/pokemon/?limit=${showMore}`
+    );
+    const data = response.data.results;
+    console.log(response);
+    setPokemon(data);
+    addPokemon();
+  }
 
   return (
     <>
