@@ -5,15 +5,11 @@ export const Header = styled.header`
   background-color: ${({ theme }) => theme.backgroundContainer};
   border: 1px solid #c8c8c8;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: space-around;
   transition: all 800ms;
 `;
 
-export const HomeHeader = styled.header`
-  background-color: ${({ theme }) => theme.backgroundContainer};
-  padding: 0 10px 10px;
-  border: 1px solid #c8c8c8;
-  display: flex;
-  justify-content: end;
-  transition: all 800ms;
+export const PokemonLogo = styled.img`
+  height: 80px;
 `;

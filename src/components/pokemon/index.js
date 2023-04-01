@@ -7,18 +7,19 @@ import {
   PokemonImages,
   PokemonList,
 } from "./pokeList.styled";
-import { HomeHeader } from "../header/header.styled";
+import { Header, PokemonLogo } from "../header/header.styled";
 import { ButtonStyle } from "../button/button.styled";
 import { ThemeContext, themes } from "../../contexts/themeContext";
 import { ThemeToggleButton } from "../ThemeToggleButton/ToggleButton";
 import { PokemonContext } from "../../contexts/pokemonContext";
+import { InputSearch } from "../inputSeach";
+import pokemonLogo from "../../assets/pokemon-logo.png";
 
 export function ShowPokemon() {
   const pageInitialLimit = 10;
 
   const [paginationOffset, setPaginationOffset] = useState(10);
   const { pokemon, setPokemon } = useContext(PokemonContext);
-  // const [ pokemon, setPokemon ] = useState([]);
   const { theme } = useContext(ThemeContext);
 
   const pocketMons = Array.from(pokemon);
@@ -39,11 +40,13 @@ export function ShowPokemon() {
 
   return (
     <>
-      <HomeHeader theme={theme}>
+      <Header theme={theme}>
+        <PokemonLogo theme={theme} src={pokemonLogo}></PokemonLogo>
+        <InputSearch/>
         <ThemeToggleButton theme={theme}>{`Theme ${
           theme === themes.light ? "☀️" : "🌒"
         }`}</ThemeToggleButton>
-      </HomeHeader>
+      </Header>
       <PokedexContainer theme={theme}>
         <PokemonCard>
           {pocketMons.map((pokemon, index) => (
@@ -52,8 +55,8 @@ export function ShowPokemon() {
                 <PokemonImages
                   src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${index}.png`}
                   alt={pokemon.name}
-                />
-                {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}
+                  />
+                  {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}
               </Link>
             </PokemonList>
           ))}

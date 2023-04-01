@@ -30,7 +30,7 @@ export const PokemonList = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.card};
-  height: 250px;
+  height: 220px;
   min-width: 200px;
   border: 1px solid #c8c8c8;
   border-radius: 10px;

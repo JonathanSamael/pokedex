@@ -4,7 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { ButtonStyle } from "../components/button/button.styled";
 import { ThemeContext, themes } from "../contexts/themeContext";
 import { PokemonContext } from "../contexts/pokemonContext";
-import { Header } from "../components/header/header.styled";
+import { Header, PokemonLogo } from "../components/header/header.styled";
 import { ThemeToggleButton } from "../components/ThemeToggleButton/ToggleButton";
 import {
   Container,
@@ -15,6 +15,7 @@ import {
   PokemonName,
   H3,
 } from "./pokemonPage.styled";
+import pokemonLogo from "../assets/pokemon-logo.png";
 
 export const PokemonPage = () => {
   const { pokemon, setPokemon } = useContext(PokemonContext);
@@ -35,6 +36,7 @@ export const PokemonPage = () => {
         <Link to={`/`}>
           <ButtonStyle theme={theme}>Back</ButtonStyle>
         </Link>
+        <PokemonLogo src={pokemonLogo}></PokemonLogo>
         <ThemeToggleButton>{`Theme ${
           theme === themes.light ? "☀️" : "🌒"
         }`}</ThemeToggleButton>
